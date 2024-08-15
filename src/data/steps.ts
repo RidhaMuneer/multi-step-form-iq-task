@@ -1,27 +1,20 @@
-// types
-import { Step } from "@/types/steps";
+import { STEPS } from "@/types/steps";
 
-// components
-import Summary from "@/components/form/Summary";
-import PlanSelection from "@/components/form/PlanSelection";
-import PersonalInformation from "@/components/form/PersonalInformation";
-import AddOns from "@/components/form/AddOns";
-
-// export const steps: Step[] = [
-//   {
-//     title: "YOUR INFO",
-//     Component: PersonalInformation,
-//   },
-//   {
-//     title: "SELECT PLAN",
-//     Component: PlanSelection,
-//   },
-//   {
-//     title: "ADD-ONS",
-//     Component: AddOns,
-//   },
-//   {
-//     title: "SUMMARY",
-//     Component: Summary,
-//   },
-// ];
+export const steps = [
+  {
+    stepNum: STEPS.FIRST,
+    title: "YOUR INFO",
+  },
+  {
+    stepNum: STEPS.SECOND,
+    title: "SELECT PLAN",
+  },
+  {
+    stepNum: STEPS.THIRD,
+    title: "ADD-ONS",
+  },
+  {
+    stepNum: STEPS.FORTH,
+    title: "SUMMARY",
+  },
+];
