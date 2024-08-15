@@ -21,10 +21,10 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
   };
 
   return (
-    <section className="flex flex-col jusitfy-center items-center gap-4 w-full">
-      <div className="flex flex-col items-start gap-1">
-        <h1 className="text-2xl">Personal Information</h1>
-        <p className="font-thin">
+    <section className="flex flex-col jusitfy-center items-center gap-14 w-full">
+      <div className="flex flex-col items-start gap-1 w-full">
+        <h1 className="text-2xl text-blue-950 font-bold">Personal Information</h1>
+        <p className="font-thin text-blue-950 opacity-60">
           Please provide your name, email address, and phone number.
         </p>
       </div>
@@ -40,7 +40,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
             )}
           </div>
           <input
-            className={`border rounded px-2 py-2 ${
+            className={`border rounded px-2 py-2 font-bold ${
               errors.phone ? "border-rose-500" : "border-gray-300"
             }`}
             type="text"
@@ -60,7 +60,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
             type="email"
             placeholder="e.g. johndow@gmail.com"
             autoComplete="email"
-            className={`border rounded px-2 py-2 ${
+            className={`border rounded px-2 py-2 font-bold ${
               errors.phone ? "border-rose-500" : "border-gray-300"
             }`}
             {...register("email", {
@@ -80,7 +80,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
             )}
           </div>
           <input
-            className={`border rounded px-2 py-2 ${
+            className={`border rounded px-2 py-2 font-bold ${
               errors.phone ? "border-rose-500" : "border-gray-300"
             }`}
             type="tel"
@@ -97,7 +97,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
         </div>
         <button
           type="submit"
-          className="mt-4 bg-blue-600 text-white px-4 py-2 rounded items-self-end"
+          className="mt-4 bg-blue-950 text-white px-4 py-2 rounded self-end hover:bg-blue-900"
         >
           Submit
         </button>

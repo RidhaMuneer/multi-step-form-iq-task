@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Red_Hat_Text } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const redHatText = Red_Hat_Text({
+  weight: ['700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +23,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={redHatText.className}>{children}</body>
     </html>
   );
 }

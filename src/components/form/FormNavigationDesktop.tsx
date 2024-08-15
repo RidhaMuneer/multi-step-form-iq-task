@@ -10,7 +10,7 @@ const FormNavigationDesktop: React.FC<FormContainerProps> = ({
 }) => {
   return (
     <nav
-      className="flex flex-col justify-start pt-10 items-start gap-4 rounded-xl min-h-[600px] px-10 w-[50%]"
+      className="flex flex-col justify-start pt-10 items-start gap-4 rounded-xl min-h-[650px] px-10 w-[50%]"
       style={{
         backgroundImage: "url('/images/bg-sidebar-desktop.svg')",
         backgroundSize: "cover",
@@ -24,9 +24,14 @@ const FormNavigationDesktop: React.FC<FormContainerProps> = ({
           onClick={() => setCurrentStep(step.stepNum)}
         >
           <p
-            className={`border rounded-full border-white text-white min-w-10 min-h-10 flex justify-center items-center ${
-              currentStep === step.stepNum && "bg-cyan-100 text-black border-0"
+            className={`border rounded-full border-white min-w-10 min-h-10 flex justify-center items-center ${
+              currentStep === step.stepNum && "border-0"
             }`}
+            style={{
+              color: currentStep === step.stepNum ? "black" : "white",
+              backgroundColor:
+                currentStep === step.stepNum ? "#9ecfde" : "transparent",
+            }}
           >
             {step.stepNum}
           </p>
