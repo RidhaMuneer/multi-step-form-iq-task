@@ -15,15 +15,20 @@ import Summary from "./Summary";
 
 const FormContainer: React.FC<FormContainerProps> = ({
   currentStep,
-  setCurrentStep
+  setCurrentStep,
 }) => {
   const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormProps>();
   return (
     <section className="w-full m-10">
       {currentStep === STEPS.FIRST && (
-        <PersonalInformation setPersonalInfo={setPersonalInfo} />
+        <PersonalInformation
+          setPersonalInfo={setPersonalInfo}
+          setCurrentStep={setCurrentStep}
+        />
       )}
-      {currentStep === STEPS.SECOND && <PlanSelection />}
+      {currentStep === STEPS.SECOND && (
+        <PlanSelection setCurrentStep={setCurrentStep} />
+      )}
       {currentStep === STEPS.THIRD && <AddOns />}
       {currentStep === STEPS.FORTH && <Summary />}
     </section>

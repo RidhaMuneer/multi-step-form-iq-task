@@ -1,13 +1,48 @@
 // types
 import { PersonalInfoFormProps } from "@/types/form";
-import { PersonalInformationProps } from "@/types/steps";
+import { PersonalInformationProps, STEPS } from "@/types/steps";
 
 // react hook form
 import { SubmitHandler, useForm } from "react-hook-form";
 
-const PersonalInformation: React.FC<PersonalInformationProps> = ({
-  setPersonalInfo,
-}) => {
+/**
+ * PersonalInformation component for collecting user details.
+ *
+ * This component provides a form for users to input their personal information, including
+ * their name, email address, and phone number. It uses React Hook Form for handling form
+ * state and validation. Upon submission, the component updates the user information and
+ * navigates to the next step in the process.
+ *
+ * @component
+ * @param {PersonalInformationProps} props - The properties passed to the component.
+ * @param {function} props.setPersonalInfo - Function to update the state with personal information.
+ * @param {React.Dispatch<React.SetStateAction<STEPS>>} props.setCurrentStep - Function to update the current step of the form.
+ *
+ * @example
+ * ```tsx
+ * import { useState } from "react";
+ * import PersonalInformation from "@/components/PersonalInformation";
+ * import { STEPS } from "@/types/steps";
+ *
+ * const MyComponent = () => {
+ *   const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormProps>();
+ *   const [currentStep, setCurrentStep] = useState<STEPS>(STEPS.FIRST);
+ *
+ *   return (
+ *     <PersonalInformation
+ *       setPersonalInfo={setPersonalInfo}
+ *       setCurrentStep={setCurrentStep}
+ *     />
+ *   );
+ * };
+ * ```
+ */
+
+const PersonalInformation: React.FC<
+  PersonalInformationProps & {
+    setCurrentStep: React.Dispatch<React.SetStateAction<STEPS>>;
+  }
+> = ({ setPersonalInfo, setCurrentStep }) => {
   const {
     register,
     handleSubmit,
@@ -18,12 +53,15 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
     data: PersonalInfoFormProps,
   ) => {
     setPersonalInfo(data);
+    setCurrentStep(STEPS.SECOND);
   };
 
   return (
     <section className="flex flex-col jusitfy-center items-center gap-14 w-full">
       <div className="flex flex-col items-start gap-1 w-full">
-        <h1 className="text-2xl text-blue-950 font-bold">Personal Information</h1>
+        <h1 className="text-2xl text-blue-950 font-bold">
+          Personal Information
+        </h1>
         <p className="font-thin text-blue-950 opacity-60">
           Please provide your name, email address, and phone number.
         </p>
@@ -97,9 +135,9 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
         </div>
         <button
           type="submit"
-          className="mt-4 bg-blue-950 text-white px-4 py-2 rounded self-end hover:bg-blue-900"
+          className="mt-4 bg-blue-950 text-white px-4 py-3 rounded self-end hover:bg-blue-900"
         >
-          Submit
+          Next Step
         </button>
       </form>
     </section>
