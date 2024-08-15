@@ -1,10 +1,11 @@
 "use client";
 
 // types
-import { PlanProps } from "@/types/plans";
+import { Plan, PlanProps } from "@/types/plans";
 
 // nextjs
 import Image from "next/image";
+import { useState } from "react";
 
 /**
  * PlanCard component displays a plan option with an icon, title, and price.
@@ -36,14 +37,29 @@ import Image from "next/image";
  * ```
  */
 
-const PlanCard: React.FC<PlanProps> = ({ icon, title, price, isMonthly }) => {
+const PlanCard: React.FC<
+  PlanProps & {
+    setSelectedPlan: React.Dispatch<React.SetStateAction<Plan | undefined>>;
+  }
+> = ({ icon, title, price, isMonthly, setSelectedPlan }) => {
+  const [planClicked, setPlanClicked] = useState<boolean>(false);
   return (
-    <article className="flex flex-row md:flex-col gap-14 justify-start items-start border rounded-xl p-5 w-full md:w-[30%]">
+    <article
+      className={`flex flex-row md:flex-col gap-14 justify-start items-start border rounded-xl p-5 w-full md:w-[30%] hover:border-indigo-600 cursor-pointer ${planClicked && "bg-indigo-100"}`}
+      onClick={() => {
+        setSelectedPlan({ title, price, isMonthly }); 
+        setPlanClicked(true);
+      }}
+    >
       <Image src={icon} alt={title} width={50} height={50} />
       <div className="flex flex-col justify-center items-start gap-1">
         <h2 className="font-bold text-blue-950 text-xl">{title}</h2>
-        <p className="font-thin text-sm opacity-50 text-blue-950">${price}/{isMonthly ? "mo" : "yr"}</p>
-        {!isMonthly && <h3 className="font-bold text-md text-blue-950">2 Months Free</h3>}
+        <p className="font-thin text-sm opacity-50 text-blue-950">
+          ${price}/{isMonthly ? "mo" : "yr"}
+        </p>
+        {!isMonthly && (
+          <h3 className="font-bold text-md text-blue-950">2 Months Free</h3>
+        )}
       </div>
     </article>
   );

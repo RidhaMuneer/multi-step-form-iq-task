@@ -4,3 +4,9 @@ export type PlanProps = {
   price: number;
   isMonthly: boolean;
 };
+
+export type Plan = {
+  title: string;
+  price: number;
+  isMonthly: boolean;
+}

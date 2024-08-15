@@ -11,6 +11,7 @@ import { useState } from "react";
 
 // types
 import { STEPS } from "@/types/steps";
+import { Plan } from "@/types/plans";
 
 /**
  * PlanSelection component allows users to select a billing plan.
@@ -42,8 +43,10 @@ import { STEPS } from "@/types/steps";
 
 const PlanSelection: React.FC<{
   setCurrentStep: React.Dispatch<React.SetStateAction<STEPS>>;
-}> = ({ setCurrentStep }) => {
+  setPlan: React.Dispatch<React.SetStateAction<Plan | undefined>>;
+}> = ({ setCurrentStep, setPlan }) => {
   const [isMonthly, setIsMonthly] = useState<boolean>(true);
+  const [selectedPlan, setSelectedPlan] = useState<Plan>();
   return (
     <section className="flex flex-col gap-10 w-full">
       <div className="flex flex-col items-start gap-1 w-full">
@@ -55,6 +58,7 @@ const PlanSelection: React.FC<{
       <div className="flex flex-col md:flex-row justify-center gap-5 items-center w-full">
         {plans.map((plan, index) => (
           <PlanCard
+            setSelectedPlan={setSelectedPlan}
             key={index}
             icon={plan.icon}
             title={plan.title}
@@ -68,7 +72,10 @@ const PlanSelection: React.FC<{
         <button className="opacity-60 hover:opacity-100 text-blue-950 pt-2" onClick={() => setCurrentStep(STEPS.FIRST)}>
           Go Back
         </button>
-        <button className="mt-4 bg-blue-950 text-white px-4 py-3 rounded self-end hover:bg-blue-900" onClick={() => setCurrentStep(STEPS.THIRD)}>
+        <button className="mt-4 bg-blue-950 text-white px-4 py-3 rounded self-end hover:bg-blue-900" onClick={() => {
+          setCurrentStep(STEPS.THIRD);
+          setPlan(selectedPlan);
+        }}>
           Next Step
         </button>
       </div>

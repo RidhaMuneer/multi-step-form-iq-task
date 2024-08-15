@@ -12,12 +12,16 @@ import PersonalInformation from "./PersonalInformation";
 import PlanSelection from "./PlanSelection";
 import AddOns from "./AddOns";
 import Summary from "./Summary";
+import { Plan } from "@/types/plans";
 
 const FormContainer: React.FC<FormContainerProps> = ({
   currentStep,
   setCurrentStep,
 }) => {
   const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormProps>();
+  const [plan, setPlan] = useState<Plan>();
+  console.log((plan));
+  
   return (
     <section className="w-full m-10">
       {currentStep === STEPS.FIRST && (
@@ -27,7 +31,7 @@ const FormContainer: React.FC<FormContainerProps> = ({
         />
       )}
       {currentStep === STEPS.SECOND && (
-        <PlanSelection setCurrentStep={setCurrentStep} />
+        <PlanSelection setCurrentStep={setCurrentStep} setPlan={setPlan} />
       )}
       {currentStep === STEPS.THIRD && <AddOns />}
       {currentStep === STEPS.FORTH && <Summary />}
