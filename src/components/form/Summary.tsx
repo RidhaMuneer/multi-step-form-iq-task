@@ -81,7 +81,7 @@ const Summary: React.FC<{
         <button
           className="mt-4 bg-indigo-600 text-white px-4 py-3 rounded self-end hover:bg-indigo-500"
           onClick={() => {
-            // setCurrentStep(STEPS.FORTH);
+            setCurrentStep(STEPS.DONE);
           }}
         >
           Confirm

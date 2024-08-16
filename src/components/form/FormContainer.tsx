@@ -9,9 +9,11 @@ import PersonalInformation from "./PersonalInformation";
 import PlanSelection from "./PlanSelection";
 import AddOns from "./AddOns";
 import Summary from "./Summary";
+import ThankYou from "../ThankYou";
 
 // hooks
 import { useForm } from "@/hooks/useForm";
+
 
 const FormContainer: React.FC<FormContainerProps> = ({
   currentStep,
@@ -30,12 +32,13 @@ const FormContainer: React.FC<FormContainerProps> = ({
         <PlanSelection setCurrentStep={setCurrentStep} />
       )}
       {currentStep === STEPS.THIRD && (
-        <AddOns
-          setCurrentStep={setCurrentStep}
-        />
+        <AddOns setCurrentStep={setCurrentStep} />
       )}
       {currentStep === STEPS.FORTH && (
         <Summary setCurrentStep={setCurrentStep} plan={plan} addOns={addOns} />
+      )}
+      {currentStep === STEPS.DONE && (
+        <ThankYou/>
       )}
     </section>
   );

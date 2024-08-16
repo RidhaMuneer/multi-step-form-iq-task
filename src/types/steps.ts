@@ -16,4 +16,5 @@ export enum STEPS {
   SECOND = 2,
   THIRD = 3,
   FORTH = 4,
+  DONE = 5
 }
