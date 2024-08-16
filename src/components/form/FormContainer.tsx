@@ -13,6 +13,7 @@ import PlanSelection from "./PlanSelection";
 import AddOns from "./AddOns";
 import Summary from "./Summary";
 import { Plan } from "@/types/plans";
+import { AddOnCardProps } from "@/types/addons";
 
 const FormContainer: React.FC<FormContainerProps> = ({
   currentStep,
@@ -20,6 +21,7 @@ const FormContainer: React.FC<FormContainerProps> = ({
 }) => {
   const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormProps>();
   const [plan, setPlan] = useState<Plan>();
+  const [addOns, setAddOns] = useState<AddOnCardProps[]>([]);
   return (
     <section className="w-full m-10">
       {currentStep === STEPS.FIRST && (
@@ -32,7 +34,11 @@ const FormContainer: React.FC<FormContainerProps> = ({
         <PlanSelection setCurrentStep={setCurrentStep} setPlan={setPlan} />
       )}
       {currentStep === STEPS.THIRD && (
-        <AddOns setCurrentStep={setCurrentStep} />
+        <AddOns
+          setCurrentStep={setCurrentStep}
+          setAddOns={setAddOns}
+          addOns={addOns}
+        />
       )}
       {currentStep === STEPS.FORTH && (
         <Summary setCurrentStep={setCurrentStep} />
