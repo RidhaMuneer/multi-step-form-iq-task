@@ -6,7 +6,7 @@ import { Plan } from "@/types/plans";
 import { AddOnCardProps } from "@/types/addons";
 
 // component
-import SummaryCard from "../SummaryCard";
+import SummaryCard from "../card/SummaryCard";
 
 // react
 import { useEffect, useState } from "react";

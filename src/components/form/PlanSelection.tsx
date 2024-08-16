@@ -3,7 +3,7 @@
 import { plans } from "@/data/plans";
 
 // components
-import PlanCard from "../PlanCard";
+import PlanCard from "../card/PlanCard";
 import Toggle from "../Toggle";
 
 // react

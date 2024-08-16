@@ -7,7 +7,7 @@ import { addons } from "@/data/addons";
 import { STEPS } from "@/types/steps";
 
 // components
-import AddOnCard from "../AddOnCard";
+import AddOnCard from "../card/AddOnCard";
 
 /**
  * AddOns component allows the user to pick additional options to enhance their gaming experience.

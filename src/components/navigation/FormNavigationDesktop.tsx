@@ -1,5 +1,6 @@
 // types
 import { FormContainerProps } from "@/types/form";
+import { STEPS } from "@/types/steps";
 
 // data
 import { steps } from "@/data/steps";
@@ -41,7 +42,11 @@ const FormNavigationDesktop: React.FC<FormContainerProps> = ({
         <div
           className="flex justify-center items-center gap-4 cursor-pointer"
           key={index}
-          onClick={() => setCurrentStep(step.stepNum)}
+          onClick={() => {
+            if(currentStep !== STEPS.DONE){
+              setCurrentStep(step.stepNum);
+            }
+          }}
         >
           <p
             className={`border rounded-full border-white min-w-10 min-h-10 flex justify-center items-center ${

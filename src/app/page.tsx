@@ -1,9 +1,9 @@
 "use client";
 
 // components
-import FormNavigationDesktop from "@/components/form/FormNavigationDesktop";
+import FormNavigationDesktop from "@/components/navigation/FormNavigationDesktop";
 import FormContainer from "@/components/form/FormContainer";
-import FormNavigationMobile from "@/components/form/FormNavigationMobile";
+import FormNavigationMobile from "@/components/navigation/FormNavigationMobile";
 
 // types
 import { STEPS } from "@/types/steps";
