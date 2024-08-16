@@ -20,8 +20,6 @@ const FormContainer: React.FC<FormContainerProps> = ({
 }) => {
   const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormProps>();
   const [plan, setPlan] = useState<Plan>();
-  console.log((plan));
-  
   return (
     <section className="w-full m-10">
       {currentStep === STEPS.FIRST && (
@@ -33,8 +31,12 @@ const FormContainer: React.FC<FormContainerProps> = ({
       {currentStep === STEPS.SECOND && (
         <PlanSelection setCurrentStep={setCurrentStep} setPlan={setPlan} />
       )}
-      {currentStep === STEPS.THIRD && <AddOns />}
-      {currentStep === STEPS.FORTH && <Summary />}
+      {currentStep === STEPS.THIRD && (
+        <AddOns setCurrentStep={setCurrentStep} />
+      )}
+      {currentStep === STEPS.FORTH && (
+        <Summary setCurrentStep={setCurrentStep} />
+      )}
     </section>
   );
 };

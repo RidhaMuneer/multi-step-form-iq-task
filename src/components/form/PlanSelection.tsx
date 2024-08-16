@@ -24,6 +24,7 @@ import { Plan } from "@/types/plans";
  * @component
  * @param {Object} props - The component properties.
  * @param {React.Dispatch<React.SetStateAction<STEPS>>} props.setCurrentStep - Function to update the current step of the form.
+ * @param {React.Dispatch<React.SetStateAction<Plan | undefined>>} props.setPlan - Function to set the chosen plan
  *
  * @example
  * ```tsx
@@ -69,13 +70,22 @@ const PlanSelection: React.FC<{
       </div>
       <Toggle setIsMonthly={setIsMonthly} isMonthly={isMonthly} />
       <div className="flex justify-between w-full items-center">
-        <button className="opacity-60 hover:opacity-100 text-blue-950 pt-2" onClick={() => setCurrentStep(STEPS.FIRST)}>
+        <button
+          className="opacity-60 hover:opacity-100 text-blue-950 pt-2"
+          onClick={() => {
+            setCurrentStep(STEPS.FIRST);
+            setPlan(selectedPlan);
+          }}
+        >
           Go Back
         </button>
-        <button className="mt-4 bg-blue-950 text-white px-4 py-3 rounded self-end hover:bg-blue-900" onClick={() => {
-          setCurrentStep(STEPS.THIRD);
-          setPlan(selectedPlan);
-        }}>
+        <button
+          className="mt-4 bg-blue-950 text-white px-4 py-3 rounded self-end hover:bg-blue-900"
+          onClick={() => {
+            setCurrentStep(STEPS.THIRD);
+            setPlan(selectedPlan);
+          }}
+        >
           Next Step
         </button>
       </div>

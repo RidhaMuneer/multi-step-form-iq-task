@@ -19,6 +19,7 @@ import { useState } from "react";
  * @param {string} props.title - The title of the plan.
  * @param {number} props.price - The price of the plan.
  * @param {boolean} props.isMonthly - The montly flag.
+ * @param {React.Dispatch<React.SetStateAction<Plan | undefined>>} props.setSelectedPlan - Function to set the selected plan.
  *
  * @example
  * ```tsx
@@ -55,7 +56,7 @@ const PlanCard: React.FC<
       <div className="flex flex-col justify-center items-start gap-1">
         <h2 className="font-bold text-blue-950 text-xl">{title}</h2>
         <p className="font-thin text-sm opacity-50 text-blue-950">
-          ${price}/{isMonthly ? "mo" : "yr"}
+          {isMonthly ? `${"$" + price}/${isMonthly ? "mo" : "yr"}` : `${"$" + price * 10}/${isMonthly ? "mo" : "yr"}`}
         </p>
         {!isMonthly && (
           <h3 className="font-bold text-md text-blue-950">2 Months Free</h3>
