@@ -18,16 +18,25 @@ import { useState, useEffect } from "react";
  */
 
 function useScreenWidthMatch(width: number) {
-  const [isMatch, setIsMatch] = useState(window.innerWidth >= width);
+  const [isMatch, setIsMatch] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMatch(window.innerWidth >= width);
+    // Function to check the window width
+    const checkWidth = () => {
+      if (typeof window !== "undefined") {
+        setIsMatch(window.innerWidth >= width);
+      }
     };
 
-    window.addEventListener("resize", handleResize);
+    // Initial check
+    checkWidth();
+
+    // Set up resize event listener
+    window.addEventListener("resize", checkWidth);
+
+    // Cleanup event listener on component unmount
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", checkWidth);
     };
   }, [width]);
 
