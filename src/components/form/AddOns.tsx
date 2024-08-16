@@ -36,7 +36,7 @@ import AddOnCard from "../AddOnCard";
 const AddOns: React.FC<{
   setCurrentStep: React.Dispatch<React.SetStateAction<STEPS>>;
   setAddOns: React.Dispatch<React.SetStateAction<AddOnCardProps[]>>;
-  addOns: AddOnCardProps[];
+  addOns: AddOnCardProps[] | undefined;
 }> = ({ setCurrentStep, setAddOns, addOns }) => {
   return (
     <section className="flex flex-col gap-10 w-full">

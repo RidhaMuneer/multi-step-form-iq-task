@@ -11,8 +11,8 @@ import { useState } from "react";
 
 /**
  * AddOnCard component represents an individual add-on option in a list of selectable add-ons.
- * The component displays the title, subtitle, and price of the add-on and allows the user 
- * to toggle the selection of the add-on. When selected, it adds the add-on to the 
+ * The component displays the title, subtitle, and price of the add-on and allows the user
+ * to toggle the selection of the add-on. When selected, it adds the add-on to the
  * `addOns` state array, and removes it when deselected.
  *
  * @component
@@ -39,16 +39,17 @@ import { useState } from "react";
 
 const AddOnCard: React.FC<
   AddOnCardProps & {
-    addOns: AddOnCardProps[];
+    addOns: AddOnCardProps[] | undefined;
     setAddOns: React.Dispatch<React.SetStateAction<AddOnCardProps[]>>;
   }
 > = ({ title, subtitle, price, setAddOns, addOns }) => {
   const [clicked, setClicked] = useState<boolean>(() => {
-    addOns.forEach((addOn) => {
-      if (addOn.title === title) {
-        return true;
-      }
-    });
+    addOns &&
+      addOns.forEach((addOn) => {
+        if (addOn.title === title) {
+          return true;
+        }
+      });
     return false;
   });
   return (

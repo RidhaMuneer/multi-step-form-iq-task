@@ -10,10 +10,14 @@ import { STEPS } from "@/types/steps";
 // react
 import { useState } from "react";
 
+// contexts
+import { FormProvider } from "@/context/FormProvider";
+
 export default function Home() {
   const [currentStep, setCurrentStep] = useState<STEPS>(STEPS.FIRST);
   return (
-    <main className="flex min-h-screen flex-col bg-indigo-50 w-full items-center justify-center">
+    <FormProvider>
+      <main className="flex min-h-screen flex-col bg-indigo-50 w-full items-center justify-center">
       <div className="bg-white rounded-xl flex p-3 w-[80%] lg:w-[60%]">
         <FormNavigationDesktop
           currentStep={currentStep}
@@ -25,5 +29,6 @@ export default function Home() {
         />
       </div>
     </main>
+    </FormProvider>
   );
 }

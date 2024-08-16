@@ -6,22 +6,21 @@ import { useState } from "react";
 // types
 import { FormContainerProps, PersonalInfoFormProps } from "@/types/form";
 import { STEPS } from "@/types/steps";
+import { Plan } from "@/types/plans";
+import { AddOnCardProps } from "@/types/addons";
 
 // components
 import PersonalInformation from "./PersonalInformation";
 import PlanSelection from "./PlanSelection";
 import AddOns from "./AddOns";
 import Summary from "./Summary";
-import { Plan } from "@/types/plans";
-import { AddOnCardProps } from "@/types/addons";
+import { useForm } from "@/hooks/useForm";
 
 const FormContainer: React.FC<FormContainerProps> = ({
   currentStep,
   setCurrentStep,
 }) => {
-  const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormProps>();
-  const [plan, setPlan] = useState<Plan>();
-  const [addOns, setAddOns] = useState<AddOnCardProps[]>([]);
+  const { setPersonalInfo, setPlan, setAddOns, addOns, plan } = useForm();
   return (
     <section className="w-full m-10">
       {currentStep === STEPS.FIRST && (
@@ -41,7 +40,7 @@ const FormContainer: React.FC<FormContainerProps> = ({
         />
       )}
       {currentStep === STEPS.FORTH && (
-        <Summary setCurrentStep={setCurrentStep} />
+        <Summary setCurrentStep={setCurrentStep} plan={plan} addOns={addOns} />
       )}
     </section>
   );
