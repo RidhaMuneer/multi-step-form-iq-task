@@ -1,5 +1,6 @@
 "use client";
 
+// types
 import { STEPS } from "@/types/steps";
 import { SummaryCardProps } from "@/types/summary";
 
@@ -22,7 +23,9 @@ const SummaryCard: React.FC<
             </button>
           </div>
           <p className="text-xl text-blue-950 font-bold">
-            {plan.isMonthly ? `${"$" + plan.price}/mo` : `${"$" + plan.price * 10}/yr`}
+            {plan.isMonthly
+              ? `${"$" + plan.price}/mo`
+              : `${"$" + plan.price * 10}/yr`}
           </p>
         </div>
       )}
@@ -38,7 +41,11 @@ const SummaryCard: React.FC<
                 <p className="font-thin text-blue-950 opacity-60">
                   {addOn.title}
                 </p>
-                <p className="text-lg text-blue-950 font-bold">{plan.isMonthly ?  `${"+$" + addOn.price}/mo` : `${"+$" + addOn.price * 10}/yr`}</p>
+                <p className="text-lg text-blue-950 font-bold">
+                  {plan.isMonthly
+                    ? `${"+$" + addOn.price}/mo`
+                    : `${"+$" + addOn.price * 10}/yr`}
+                </p>
               </div>
             ))}
           </div>

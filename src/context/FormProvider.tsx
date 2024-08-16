@@ -18,6 +18,8 @@ export const FormContext = createContext<
       setPlanClicked: React.Dispatch<React.SetStateAction<boolean>>;
       addOns: AddOnCardProps[] | undefined;
       setAddOns: React.Dispatch<React.SetStateAction<AddOnCardProps[]>>;
+      handleAddOnClick: (addOn: AddOnCardProps) => void;
+      handleAddOnRemove: (addOn: AddOnCardProps) => void;
     }
   | undefined
 >(undefined);
@@ -29,6 +31,23 @@ export const FormProvider: React.FC<{ children: ReactNode }> = ({
   const [plan, setPlan] = useState<Plan>();
   const [planClicked, setPlanClicked] = useState<boolean>(false);
   const [addOns, setAddOns] = useState<AddOnCardProps[]>([]);
+
+  const handleAddOnClick = (addOn: AddOnCardProps) => {
+    setAddOns((prevAddOns) => {
+      const exists = prevAddOns.some((item) => item.title === addOn.title);
+      if (exists) {
+        return prevAddOns;
+      }
+      return [...prevAddOns, addOn];
+    });
+  };
+
+  const handleAddOnRemove = (addOn: AddOnCardProps) => {
+    setAddOns((prevAddOns) => {
+      return prevAddOns.filter((item) => item.title !== addOn.title);
+    });
+  };
+
   return (
     <FormContext.Provider
       value={{
@@ -39,7 +58,9 @@ export const FormProvider: React.FC<{ children: ReactNode }> = ({
         setPersonalInfo,
         setPlan,
         planClicked,
-        setPlanClicked
+        setPlanClicked,
+        handleAddOnClick,
+        handleAddOnRemove,
       }}
     >
       {children}

@@ -35,9 +35,7 @@ import AddOnCard from "../AddOnCard";
 
 const AddOns: React.FC<{
   setCurrentStep: React.Dispatch<React.SetStateAction<STEPS>>;
-  setAddOns: React.Dispatch<React.SetStateAction<AddOnCardProps[]>>;
-  addOns: AddOnCardProps[] | undefined;
-}> = ({ setCurrentStep, setAddOns, addOns }) => {
+}> = ({ setCurrentStep}) => {
   return (
     <section className="flex flex-col gap-10 w-full">
       <div className="flex flex-col items-start gap-1 w-full">
@@ -53,8 +51,6 @@ const AddOns: React.FC<{
             title={addon.title}
             subtitle={addon.subtitle}
             price={addon.price}
-            setAddOns={setAddOns}
-            addOns={addOns}
           />
         ))}
       </div>

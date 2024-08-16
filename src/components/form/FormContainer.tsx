@@ -1,7 +1,7 @@
 "use client";
 
 // types
-import { FormContainerProps, PersonalInfoFormProps } from "@/types/form";
+import { FormContainerProps } from "@/types/form";
 import { STEPS } from "@/types/steps";
 
 // components
@@ -15,7 +15,7 @@ const FormContainer: React.FC<FormContainerProps> = ({
   currentStep,
   setCurrentStep,
 }) => {
-  const { setPersonalInfo, setPlan, setAddOns, addOns, plan } = useForm();
+  const { setPersonalInfo, addOns, plan } = useForm();
   return (
     <section className="w-full m-10 z-10">
       {currentStep === STEPS.FIRST && (
@@ -25,13 +25,11 @@ const FormContainer: React.FC<FormContainerProps> = ({
         />
       )}
       {currentStep === STEPS.SECOND && (
-        <PlanSelection setCurrentStep={setCurrentStep} setPlan={setPlan} />
+        <PlanSelection setCurrentStep={setCurrentStep} />
       )}
       {currentStep === STEPS.THIRD && (
         <AddOns
           setCurrentStep={setCurrentStep}
-          setAddOns={setAddOns}
-          addOns={addOns}
         />
       )}
       {currentStep === STEPS.FORTH && (

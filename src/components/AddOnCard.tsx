@@ -1,5 +1,6 @@
 "use client";
 
+import { useForm } from "@/hooks/useForm";
 // types
 import { AddOnCardProps } from "@/types/addons";
 
@@ -37,21 +38,12 @@ import { useState } from "react";
  * ```
  */
 
-const AddOnCard: React.FC<
-  AddOnCardProps & {
-    addOns: AddOnCardProps[] | undefined;
-    setAddOns: React.Dispatch<React.SetStateAction<AddOnCardProps[]>>;
-  }
-> = ({ title, subtitle, price, setAddOns, addOns }) => {
+const AddOnCard: React.FC<AddOnCardProps> = ({ title, subtitle, price }) => {
+  const { handleAddOnClick, handleAddOnRemove, addOns } = useForm();
   const [clicked, setClicked] = useState<boolean>(() => {
-    addOns &&
-      addOns.forEach((addOn) => {
-        if (addOn.title === title) {
-          return true;
-        }
-      });
-    return false;
+    return addOns ? addOns.some((addOn) => addOn.title === title) : false;
   });
+
   return (
     <article
       className={`flex w-full justify-between items-center border rounded-xl cursor-pointer border-gray-200 p-5 hover:border-indigo-700 ${
@@ -59,8 +51,9 @@ const AddOnCard: React.FC<
       }`}
       onClick={() => {
         setClicked((prev) => !prev);
-        clicked &&
-          setAddOns((prev) => [...(prev || []), { title, subtitle, price }]);
+        !clicked
+          ? handleAddOnClick({ title, subtitle, price })
+          : handleAddOnRemove({ title, subtitle, price });
       }}
     >
       <div className="flex justify-center items-center gap-5">
