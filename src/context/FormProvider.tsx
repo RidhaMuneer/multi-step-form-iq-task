@@ -6,6 +6,25 @@ import { Plan } from "@/types/plans";
 // react
 import { createContext, ReactNode, useState } from "react";
 
+/**
+ * Context for managing form state throughout the application.
+ * Provides personal information, selected plan, add-ons, and functions
+ * to handle changes to these states. Useful for form steps and summary.
+ *
+ * @type {React.Context<{
+*   personalInfo: PersonalInfoFormProps | undefined;
+*   setPersonalInfo: React.Dispatch<React.SetStateAction<PersonalInfoFormProps | undefined>>;
+*   plan: Plan | undefined;
+*   setPlan: React.Dispatch<React.SetStateAction<Plan | undefined>>;
+*   planClicked: boolean;
+*   setPlanClicked: React.Dispatch<React.SetStateAction<boolean>>;
+*   addOns: AddOnCardProps[] | undefined;
+*   setAddOns: React.Dispatch<React.SetStateAction<AddOnCardProps[]>>;
+*   handleAddOnClick: (addOn: AddOnCardProps) => void;
+*   handleAddOnRemove: (addOn: AddOnCardProps) => void;
+* } | undefined>}
+*/
+
 export const FormContext = createContext<
   | {
       personalInfo: PersonalInfoFormProps | undefined;

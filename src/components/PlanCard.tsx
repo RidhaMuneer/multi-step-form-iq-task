@@ -1,14 +1,41 @@
 "use client";
 
+// hooks
 import { useForm } from "@/hooks/useForm";
+
 // types
 import { PlanProps } from "@/types/plans";
 
 // nextjs
 import Image from "next/image";
 
+/**
+ * PlanCard component represents an individual subscription plan option.
+ * It displays the plan's icon, title, price, and additional details.
+ * Users can select a plan by clicking on the card, which will trigger
+ * the `setPlan` function to update the selected plan and highlight
+ * the selected card with a background color.
+ *
+ * @component
+ * @param {string} icon - The path to the image or icon of the plan.
+ * @param {string} title - The title or name of the plan.
+ * @param {number} price - The price of the plan.
+ * @param {boolean} isMonthly - Indicates whether the plan is monthly (`true`) or yearly (`false`).
+ * @returns {JSX.Element} The rendered PlanCard component.
+ *
+ * @example
+ * ```jsx
+ * <PlanCard
+ *   icon="/images/plan-icon.svg"
+ *   title="Basic Plan"
+ *   price={9.99}
+ *   isMonthly={true}
+ * />
+ * ```
+ */
+
 const PlanCard: React.FC<PlanProps> = ({ icon, title, price, isMonthly }) => {
-  const { setPlan, setPlanClicked, planClicked, plan } = useForm();
+  const { setPlan, setPlanClicked, plan } = useForm();
   return (
     <article
       className={`flex flex-row md:flex-col gap-14 justify-start items-start border rounded-xl p-5 w-full md:w-[30%] hover:border-indigo-600 cursor-pointer ${

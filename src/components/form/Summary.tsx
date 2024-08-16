@@ -2,10 +2,36 @@
 
 // types
 import { STEPS } from "@/types/steps";
-import SummaryCard from "../SummaryCard";
 import { Plan } from "@/types/plans";
 import { AddOnCardProps } from "@/types/addons";
+
+// component
+import SummaryCard from "../SummaryCard";
+
+// react
 import { useEffect, useState } from "react";
+
+/**
+ * Summary component displays the final summary of the user's selections including the selected plan
+ * and add-ons. It calculates the total cost based on the selected plan and add-ons, and provides
+ * buttons for navigating to the previous step or confirming the selection.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {Plan | undefined} props.plan - The selected plan object or undefined if no plan is selected.
+ * @param {AddOnCardProps[] | undefined} props.addOns - The array of selected add-ons or undefined if no add-ons are selected.
+ * @param {React.Dispatch<React.SetStateAction<STEPS>>} props.setCurrentStep - Function to update the current step.
+ * @returns {JSX.Element} The rendered Summary component.
+ *
+ * @example
+ * ```jsx
+ * <Summary
+ *   plan={selectedPlan}
+ *   addOns={selectedAddOns}
+ *   setCurrentStep={setStep}
+ * />
+ * ```
+ */
 
 const Summary: React.FC<{
   plan: Plan | undefined;

@@ -17,6 +17,18 @@ import { FormProvider } from "@/context/FormProvider";
 // hooks
 import useScreenWidthMatch from "@/hooks/useScreenWidth";
 
+
+/**
+ * Home component serves as the main entry point of the application. It manages the current step
+ * of the form and renders the appropriate form navigation and form container based on the screen width.
+ * It also provides context for form data using the `FormProvider` and adjusts the layout for mobile
+ * and desktop views.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Home component.
+ *
+ */
+
 export default function Home() {
   const [currentStep, setCurrentStep] = useState<STEPS>(STEPS.FIRST);
   const isMd = useScreenWidthMatch(768);

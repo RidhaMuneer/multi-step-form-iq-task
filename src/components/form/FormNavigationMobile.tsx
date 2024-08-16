@@ -1,6 +1,27 @@
 import { steps } from "@/data/steps";
 import { FormContainerProps } from "@/types/form";
 
+/**
+ * FormNavigationMobile component provides a navigation interface for selecting
+ * different steps in a form. It displays step numbers in a mobile-friendly layout
+ * and highlights the currently active step. Users can click on a step number to
+ * navigate to that step.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {number} props.currentStep - The current active step number.
+ * @param {React.Dispatch<React.SetStateAction<number>>} props.setCurrentStep - Function to update the current step.
+ * @returns {JSX.Element} The rendered FormNavigationMobile component.
+ *
+ * @example
+ * ```jsx
+ * <FormNavigationMobile
+ *   currentStep={1}
+ *   setCurrentStep={(step) => console.log(step)}
+ * />
+ * ```
+ */
+
 const FormNavigationMobile: React.FC<FormContainerProps> = ({
   currentStep,
   setCurrentStep,

@@ -20,20 +20,14 @@ import { useState } from "react";
  * @param {string} title - The title of the add-on.
  * @param {string} subtitle - The subtitle or description of the add-on.
  * @param {number} price - The price of the add-on.
- * @param {AddOnCardProps[]} addOns - The current array of selected add-ons.
- * @param {React.Dispatch<React.SetStateAction<AddOnCardProps[]>>} setAddOns - Function to update the selected add-ons.
  * @returns {JSX.Element} The rendered AddOnCard component.
  *
  * @example
  * ```jsx
- * const [addOns, setAddOns] = useState<AddOnCardProps[]>([]);
- *
  * <AddOnCard
  *   title="Extra Storage"
  *   subtitle="2 TB of cloud storage"
  *   price={9.99}
- *   addOns={addOns}
- *   setAddOns={setAddOns}
  * />
  * ```
  */

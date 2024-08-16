@@ -4,6 +4,26 @@ import { FormContainerProps } from "@/types/form";
 // data
 import { steps } from "@/data/steps";
 
+/**
+ * FormNavigationDesktop component provides a sidebar navigation for selecting
+ * different steps in a form on larger screens. It displays each step's number and title
+ * with an indicator for the current active step. Users can click on a step to navigate to that step.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {number} props.currentStep - The current active step number.
+ * @param {React.Dispatch<React.SetStateAction<number>>} props.setCurrentStep - Function to update the current step.
+ * @returns {JSX.Element} The rendered FormNavigationDesktop component.
+ *
+ * @example
+ * ```jsx
+ * <FormNavigationDesktop
+ *   currentStep={1}
+ *   setCurrentStep={(step) => console.log(step)}
+ * />
+ * ```
+ */
+
 const FormNavigationDesktop: React.FC<FormContainerProps> = ({
   currentStep,
   setCurrentStep,

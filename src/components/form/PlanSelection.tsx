@@ -11,7 +11,6 @@ import { useState } from "react";
 
 // types
 import { STEPS } from "@/types/steps";
-import { Plan } from "@/types/plans";
 
 /**
  * PlanSelection component allows users to select a billing plan.
@@ -24,7 +23,6 @@ import { Plan } from "@/types/plans";
  * @component
  * @param {Object} props - The component properties.
  * @param {React.Dispatch<React.SetStateAction<STEPS>>} props.setCurrentStep - Function to update the current step of the form.
- * @param {React.Dispatch<React.SetStateAction<Plan | undefined>>} props.setPlan - Function to set the chosen plan
  *
  * @example
  * ```tsx
