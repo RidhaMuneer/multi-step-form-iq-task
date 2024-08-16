@@ -1,13 +1,8 @@
 "use client";
 
-// react
-import { useState } from "react";
-
 // types
 import { FormContainerProps, PersonalInfoFormProps } from "@/types/form";
 import { STEPS } from "@/types/steps";
-import { Plan } from "@/types/plans";
-import { AddOnCardProps } from "@/types/addons";
 
 // components
 import PersonalInformation from "./PersonalInformation";
@@ -22,7 +17,7 @@ const FormContainer: React.FC<FormContainerProps> = ({
 }) => {
   const { setPersonalInfo, setPlan, setAddOns, addOns, plan } = useForm();
   return (
-    <section className="w-full m-10">
+    <section className="w-full m-10 z-10">
       {currentStep === STEPS.FIRST && (
         <PersonalInformation
           setPersonalInfo={setPersonalInfo}
